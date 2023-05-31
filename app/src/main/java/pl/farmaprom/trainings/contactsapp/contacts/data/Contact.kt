@@ -1,7 +1,6 @@
 package pl.farmaprom.trainings.contactsapp.contacts.data
 
 import com.google.android.gms.maps.model.LatLng
-import org.joda.time.DateTime
 
 data class Contact(
     val id: Long = -1,
@@ -10,8 +9,8 @@ data class Contact(
     val relation: String? = null,
     val email: String = "",
     val phone: String = "",
-    val city: String? = null,
-    val birthday: DateTime? = null,
+    val city: String = "",
+    val birthday: String = "",
     val location: LatLng? = null,
     val profileImageUrl: String? = null,
     val isFavourite: Boolean = false,

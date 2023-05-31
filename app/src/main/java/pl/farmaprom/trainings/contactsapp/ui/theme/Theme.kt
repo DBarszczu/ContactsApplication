@@ -14,12 +14,14 @@ import androidx.core.view.ViewCompat
 private val LightColorsScheme = lightColorScheme(
     primary = Purple500,
     tertiary = Purple700,
-    secondary = Teal200
+    secondary = Blue500,
+
 )
 private val DarkColorsScheme = darkColorScheme(
     primary = Purple200,
     tertiary = Purple700,
-    secondary = Teal200
+    secondary = Teal200,
+
 )
 
 @Composable

@@ -58,8 +58,8 @@ private fun ContactInfoItemPreview() {
     ContactsAppTheme {
         ContactInfoItem(
             imageUrl = null,
-            name = "Name",
-            surname = "Surname"
+            name = "Dominik",
+            surname = "Barszcz"
         )
     }
 }

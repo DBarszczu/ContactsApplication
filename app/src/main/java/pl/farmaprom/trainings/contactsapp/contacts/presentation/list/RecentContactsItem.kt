@@ -1,12 +1,16 @@
-package pl.farmaprom.trainings.contactsapp.contacts.presentation.list
-
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Icon
@@ -26,27 +30,30 @@ import pl.farmaprom.trainings.contactsapp.R
 import pl.farmaprom.trainings.contactsapp.ui.theme.ContactsAppTheme
 
 @Composable
-fun ContactsItem(
+fun RecentContactsItem(
     id: Long,
     profileImageUrl: String?,
     name: String,
-    isFavourite: Boolean = false,
     onContactClicked: (id: Long) -> Unit = {}
 ) {
     val resolvedUrl = profileImageUrl ?: R.drawable.ic_launcher_background
-    Row(
+    Column(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .width(120.dp)
+            .height(120.dp)
             .clickable {
                 onContactClicked.invoke(id)
+            }
+            .background(
+                color = MaterialTheme.colorScheme.secondary,
+                shape = RoundedCornerShape(16.dp),
 
-            },
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
+                ),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically
+        Column(
+           horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             GlideImage(
                 modifier = Modifier
@@ -59,44 +66,25 @@ fun ContactsItem(
                     contentScale = ContentScale.Crop
                 )
             )
+            Spacer(modifier = Modifier.height(8.dp))
             Text(
-                modifier = Modifier.padding(start = 16.dp),
                 text = name,
                 style = MaterialTheme.typography.headlineSmall
             )
         }
-        if (isFavourite) {
-            Icon(
-                modifier = Modifier.size(24.dp),
-                imageVector = Icons.Default.Star,
-                contentDescription = ""
-            )
-        }
+
     }
 }
 
-@Preview(showBackground = true, device = Devices.PIXEL_4)
-@Composable
-fun ContactItemFavouritePreview() {
-    ContactsAppTheme {
-        ContactsItem(
-            id = 1L,
-            profileImageUrl = null,
-            name = "Preview Contact",
-            isFavourite = true
-        )
-    }
-}
+
 
 @Preview(showBackground = true, device = Devices.PIXEL_4)
 @Composable
-fun ContactItemPreview() {
+fun RecentContactsItemPreview() {
     ContactsAppTheme {
-        ContactsItem(
+        RecentContactsItem(
             id = 1L,
             profileImageUrl = null,
-            name = "Preview Contact",
-            isFavourite = false
-        )
+            name = "Prewiew" )
     }
 }
